@@ -9,6 +9,7 @@ import { handleAddProducts } from "./controllers/handleAddProducts.js";
 import { handleGetProductsByShopId } from "./controllers/handleGetProductsByShopId.js";
 import { handleDeleteProduct } from "./controllers/handleDeleteProduct.js";
 import { handleGetShopDetailOfUser } from "./controllers/handleGetShopDetailOfUser.js";
+import { handleUpdateProduct } from "./controllers/handleUpdateProduct.js";
 
 const app = express();
 const port = process.env.PORT || 8001;
@@ -60,6 +61,11 @@ app.post("/add_products", auth, (req, res) => {
 // get products by shop id
 app.get("/products_in_shop/:shopId", auth, (req, res) => {
   handleGetProductsByShopId(req, res);
+});
+
+//update product
+app.patch("/update_product/:id", auth, (req, res) => {
+  handleUpdateProduct(req, res);
 });
 
 //delete product
